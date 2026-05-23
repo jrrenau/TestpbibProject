@@ -1,0 +1,169 @@
+table FactFinance
+	lineageTag: 6f686eb3-38ef-4ba3-ac07-faaace48b70c
+
+	column Segment
+		dataType: string
+		lineageTag: 5ca6acd3-3a25-4752-8176-2195e09fff8f
+		summarizeBy: none
+		sourceColumn: Segment
+
+		annotation SummarizationSetBy = Automatic
+
+	column Country
+		dataType: string
+		lineageTag: 0b331b30-a80c-4b5c-8c86-7a227bb86623
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column Product
+		dataType: string
+		lineageTag: f9e21196-3b7c-44db-ba84-46c8eb25dd2c
+		summarizeBy: none
+		sourceColumn: Product
+
+		annotation SummarizationSetBy = Automatic
+
+	column Discount_Band
+		dataType: string
+		lineageTag: 0cc07e7f-4605-45ef-b584-e1c0077a7188
+		summarizeBy: none
+		sourceColumn: Discount_Band
+
+		annotation SummarizationSetBy = Automatic
+
+	column Units_Sold
+		dataType: double
+		lineageTag: 5f163963-d88d-4549-b8c7-cd901fe9e215
+		summarizeBy: sum
+		sourceColumn: Units_Sold
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Manufacturing_Price
+		dataType: int64
+		formatString: 0
+		lineageTag: c17db302-810e-44a5-aa74-e3995e3a7b95
+		summarizeBy: sum
+		sourceColumn: Manufacturing_Price
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sale_Price
+		dataType: int64
+		formatString: 0
+		lineageTag: 75d079cd-225e-488c-b118-cd9dc8a744f2
+		summarizeBy: sum
+		sourceColumn: Sale_Price
+
+		annotation SummarizationSetBy = Automatic
+
+	column Gross_Sales
+		dataType: double
+		lineageTag: 87d46d4b-b33b-4939-951a-2998f12ee82a
+		summarizeBy: sum
+		sourceColumn: Gross_Sales
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Discounts
+		dataType: double
+		lineageTag: 2980f062-5362-48b4-a07d-35eb637cba01
+		summarizeBy: sum
+		sourceColumn: Discounts
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Sales
+		dataType: double
+		lineageTag: 130a3dd3-9d90-4efc-bc76-39d37a41f588
+		summarizeBy: sum
+		sourceColumn: Sales
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column COGS
+		dataType: double
+		lineageTag: a25735e0-a981-44e6-9c1d-d1ea1ead34ac
+		summarizeBy: sum
+		sourceColumn: COGS
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Profit
+		dataType: double
+		lineageTag: 936d3b67-70f6-4ac1-afc0-454714f70577
+		summarizeBy: sum
+		sourceColumn: Profit
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: df8456e0-9077-4989-99be-17ad50592f06
+		summarizeBy: none
+		sourceColumn: Date
+
+		variation Variation
+			isDefault
+			relationship: bf66c562-c648-46fc-8a6b-7bbac8749f35
+			defaultHierarchy: LocalDateTable_52aa2257-58a0-4c75-8ab7-b519f70e7395.'Hiérarchie de dates'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Month_Number
+		dataType: int64
+		formatString: 0
+		lineageTag: 5774bae0-9eba-432a-984d-80f907b35efb
+		summarizeBy: sum
+		sourceColumn: Month_Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month_Name
+		dataType: string
+		lineageTag: 941664c7-d19d-472f-a52a-d5ed443bea14
+		summarizeBy: none
+		sourceColumn: Month_Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: 3b9ec24e-08d0-4ef1-a67f-a33b2f22065a
+		summarizeBy: sum
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	partition FactFinance = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("DESKTOP-CVGK1EK\SQLEXPRESS"),
+				    CRM_SALES = Source{[Name="CRM_SALES"]}[Data],
+				    dbo_FactFinancials = CRM_SALES{[Schema="dbo",Item="FactFinancials"]}[Data]
+				in
+				    dbo_FactFinancials
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

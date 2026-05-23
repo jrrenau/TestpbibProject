@@ -1,0 +1,20 @@
+model Model
+	culture: fr-CA
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["FactFinance"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table FactFinance
+ref table DateTableTemplate_145c31e5-6c45-4a8d-88c8-1bd9c69d849b
+ref table LocalDateTable_52aa2257-58a0-4c75-8ab7-b519f70e7395
+
+ref cultureInfo fr-CA
+
