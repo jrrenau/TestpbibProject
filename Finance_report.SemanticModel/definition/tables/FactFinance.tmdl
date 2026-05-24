@@ -1,6 +1,11 @@
 table FactFinance
 	lineageTag: 6f686eb3-38ef-4ba3-ac07-faaace48b70c
 
+	measure Total_Sales = Sum(FactFinance[Sales])
+		lineageTag: e2f8a5e4-61d3-4958-9a37-cd7dff94777c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
 	column Segment
 		dataType: string
 		lineageTag: 5ca6acd3-3a25-4752-8176-2195e09fff8f
