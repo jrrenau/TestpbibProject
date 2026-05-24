@@ -1,0 +1,14 @@
+expression ServerSQL = "DESKTOP-CVGK1EK\SQLEXPRESS" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: f3a2b4ec-ffbf-4dd1-9c79-e95e68f468e7
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+
+expression Database = "CRM_SALES" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=false]
+	lineageTag: dfc48a51-0780-4797-a425-b05a83ef4cf2
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+

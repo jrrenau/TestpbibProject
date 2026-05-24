@@ -8,7 +8,7 @@ model Model
 
 annotation __PBI_TimeIntelligenceEnabled = 1
 
-annotation PBI_QueryOrder = ["FactFinance"]
+annotation PBI_QueryOrder = ["FactFinance","ServerSQL","Database"]
 
 annotation PBI_ProTooling = ["DevMode"]
 

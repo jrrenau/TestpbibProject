@@ -157,13 +157,14 @@ table FactFinance
 		mode: import
 		source =
 				let
-				    Source = Sql.Databases("DESKTOP-CVGK1EK\SQLEXPRESS"),
-				    CRM_SALES = Source{[Name="CRM_SALES"]}[Data],
-				    dbo_FactFinancials = CRM_SALES{[Schema="dbo",Item="FactFinancials"]}[Data]
+				    Source = Sql.Databases(@ServerSQL),
+				    CRM_SALES = Source{[Name=@Database]}[Data],
+				    dbo_FactFinancials = CRM_SALES{[Schema="dbo",Item="FactFinancials"]}[Data],
+				    #"Lignes filtrées" = Table.SelectRows(dbo_FactFinancials, each [Segment] <> "Government")
 				in
-				    dbo_FactFinancials
-
-	changedProperty = Name
+				    #"Lignes filtrées"
 
 	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
 
