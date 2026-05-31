@@ -121,6 +121,24 @@
             }
           ]
         },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactFinance"
+                    }
+                  },
+                  "Property": "Segment"
+                }
+              },
+              "queryRef": "FactFinance.Segment",
+              "nativeQueryRef": "Segment"
+            }
+          ]
+        },
         "Y": {
           "projections": [
             {
